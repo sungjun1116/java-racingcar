@@ -2,14 +2,14 @@ package game.domain;
 
 public class TryCount {
 
-    private int count;
+    private final int count;
 
     public TryCount(final int count) {
         this.count = count;
     }
 
-    public void minusCount() {
-        count--;
+    public TryCount minusCount() {
+        return new TryCount(this.count - 1);
     }
 
     public boolean isEnd() {

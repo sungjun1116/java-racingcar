@@ -29,7 +29,7 @@ public class RacingGame {
 
     public void race(final MovableStrategy movableStrategy) {
         cars.moveCarList(movableStrategy);
-        this.count.minusCount();
+        this.count = count.minusCount();
     }
 
     public List<Car> getCars() {
