@@ -1,6 +1,6 @@
 package game.view;
 
-import game.controller.dto.GameParam;
+import game.dto.GameParam;
 
 import java.util.Arrays;
 import java.util.List;

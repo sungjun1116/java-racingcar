@@ -1,4 +1,4 @@
-package game.controller.dto;
+package game.dto;
 
 import java.util.List;
 
