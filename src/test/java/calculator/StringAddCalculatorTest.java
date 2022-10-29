@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class StringAddCalculatorTest {
 
@@ -40,6 +40,7 @@ class StringAddCalculatorTest {
 
     @Test
     void 숫자_음수() {
-        assertThatThrownBy(() -> splitAndSum("1,2;-3")).isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> splitAndSum("1,2;-3"));
     }
 }
