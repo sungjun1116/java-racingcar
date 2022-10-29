@@ -2,28 +2,44 @@ package game.domain;
 
 import game.domain.movable.MovableStrategy;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.carList = cars;
+        this.cars = cars;
     }
 
     public void moveCarList(final MovableStrategy movableStrategy) {
-        for (Car v : this.carList) {
+        for (Car v : this.cars) {
             v.move(movableStrategy);
         }
     }
 
-    public boolean contains(Car car) {
-        return this.carList.contains(car);
+    public List<Car> findWinners() {
+        return findWinners(getMaxPosition());
     }
 
-    public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+    private List<Car> findWinners(final Position maxPosition) {
+        List<Car> winners = new ArrayList<>();
+        cars.stream()
+                .filter(car -> car.hasSamePosition(maxPosition))
+                .forEach(winners::add);
+        return winners;
+    }
+
+    private Position getMaxPosition() {
+        return Collections.max(cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList()));
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

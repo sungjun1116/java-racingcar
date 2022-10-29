@@ -1,6 +1,6 @@
 package game.controller.dto;
 
-import game.domain.Cars;
+import game.domain.Car;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,8 +14,8 @@ public class CarsDto {
         this.carList = carList;
     }
 
-    public static CarsDto from(final Cars cars) {
-        return new CarsDto(cars.getCarList().stream()
+    public static CarsDto from(final List<Car> cars) {
+        return new CarsDto(cars.stream()
                 .map(CarDto::from)
                 .collect(Collectors.toList()));
     }

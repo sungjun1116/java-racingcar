@@ -13,7 +13,7 @@ class CarsTest {
 
         cars.moveCarList(() -> true);
 
-        for (Car car : cars.getCarList()) {
+        for (Car car : cars.getCars()) {
             Assertions.assertThat(car.getPosition()).isEqualTo(new Position(1));
         }
     }
@@ -24,8 +24,18 @@ class CarsTest {
 
         cars.moveCarList(() -> false);
 
-        for (Car car : cars.getCarList()) {
+        for (Car car : cars.getCars()) {
             Assertions.assertThat(car.getPosition()).isEqualTo(new Position(0));
         }
+    }
+
+    @Test
+    void 우승자_구하기() {
+        Car a = new Car(1, "a");
+        Car b = new Car(1, "b");
+        Car c = new Car(0, "c");
+        Cars cars = new Cars(List.of(a, b, c));
+
+        Assertions.assertThat(cars.findWinners()).containsExactly(a, b);
     }
 }

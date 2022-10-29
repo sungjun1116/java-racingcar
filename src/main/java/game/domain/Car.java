@@ -28,8 +28,8 @@ public class Car {
         }
     }
 
-    public boolean hasSamePosition(final int position) {
-        return this.position.equals(new Position(position));
+    public boolean hasSamePosition(final Position position) {
+        return this.position.equals(position);
     }
 
     @Override

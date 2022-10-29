@@ -4,7 +4,6 @@ import game.controller.dto.CarsDto;
 import game.controller.dto.GameParam;
 import game.domain.Car;
 import game.domain.Cars;
-import game.domain.Winners;
 import game.domain.movable.MovableStrategy;
 import game.view.InputView;
 import game.view.OutputView;
@@ -22,12 +21,12 @@ public class RacingGame {
         for (int i = 0; i < param.getCountOfRound(); i++) {
             playRound(cars, movableStrategy);
         }
-        OutputView.printWinners(CarsDto.from(Winners.findWinners(cars)));
+        OutputView.printWinners(CarsDto.from(cars.findWinners()));
     }
 
     private static void playRound(final Cars cars, final MovableStrategy movableStrategy) {
         cars.moveCarList(movableStrategy);
-        OutputView.printOutputBody(CarsDto.from(cars));
+        OutputView.printOutputBody(CarsDto.from(cars.getCars()));
     }
 
 }
